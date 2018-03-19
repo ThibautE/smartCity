@@ -1,5 +1,6 @@
 package com.example.thibaut.smartcity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -97,5 +98,25 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void goToPubActivity(View view){
+        Intent intent = new Intent(this, PubActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToNewsActivity(View view){
+        Intent intent = new Intent(this, NewsActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToCommerceActivity(View view){
+        Intent intent = new Intent(this, CommerceActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToSocialActivity(View view){
+        Intent intent = new Intent(this, SocialActivity.class);
+        startActivity(intent);
     }
 }

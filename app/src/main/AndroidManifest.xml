@@ -26,7 +26,39 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".NewsActivity"
+            android:label="@string/title_activity_news"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.thibaut.smartcity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SocialActivity"
+            android:label="@string/title_activity_social"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.thibaut.smartcity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".CommerceActivity"
+            android:label="@string/title_activity_commerce"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.thibaut.smartcity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".PubActivity"
+            android:label="@string/title_activity_pub"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.thibaut.smartcity.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

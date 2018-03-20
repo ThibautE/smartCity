@@ -20,14 +20,16 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/pub"
+                android:id="@+id/news"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="goToPubActivity"
-                android:text="Publicité"
-                tools:layout_editor_absoluteX="218dp"
-                tools:layout_editor_absoluteY="348dp" />
+                android:onClick="goToNewsActivity"
+                android:text="Actualités"
+                tools:layout_editor_absoluteX="26dp"
+                tools:layout_editor_absoluteY="112dp"
+                android:background="@android:color/holo_red_dark"
+                android:textColor="@android:color/white"/>
 
             <Button
                 android:id="@+id/commerce"
@@ -35,9 +37,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="goToCommerceActivity"
-                android:text="Commerce"
+                android:text="Commerces"
                 tools:layout_editor_absoluteX="26dp"
-                tools:layout_editor_absoluteY="348dp" />
+                tools:layout_editor_absoluteY="348dp"
+                android:background="@android:color/holo_orange_dark"
+                android:textColor="@android:color/white"/>
         </LinearLayout>
 
         <LinearLayout
@@ -47,24 +51,28 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/news"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:onClick="goToNewsActivity"
-                android:text="Actualité"
-                tools:layout_editor_absoluteX="26dp"
-                tools:layout_editor_absoluteY="112dp" />
-
-            <Button
                 android:id="@+id/social"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="goToSocialActivity"
-                android:text="Réseau social"
+                android:text="Social"
                 tools:layout_editor_absoluteX="214dp"
-                tools:layout_editor_absoluteY="111dp" />
+                tools:layout_editor_absoluteY="111dp"
+                android:background="@android:color/holo_blue_dark"
+                android:textColor="@android:color/white"/>
+
+            <Button
+                android:id="@+id/pub"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="goToPubActivity"
+                android:text="Bons plans"
+                tools:layout_editor_absoluteX="218dp"
+                tools:layout_editor_absoluteY="348dp"
+                android:background="@android:color/holo_green_dark"
+                android:textColor="@android:color/white"/>
         </LinearLayout>
 
     </LinearLayout>

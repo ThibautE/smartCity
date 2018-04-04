@@ -28,7 +28,7 @@
                 android:text="Actualités"
                 tools:layout_editor_absoluteX="26dp"
                 tools:layout_editor_absoluteY="112dp"
-                android:background="@android:color/holo_red_dark"
+                android:background="@color/red"
                 android:textColor="@android:color/white"/>
 
             <Button
@@ -40,7 +40,7 @@
                 android:text="Commerces"
                 tools:layout_editor_absoluteX="26dp"
                 tools:layout_editor_absoluteY="348dp"
-                android:background="@android:color/holo_orange_dark"
+                android:background="@color/orange"
                 android:textColor="@android:color/white"/>
         </LinearLayout>
 
@@ -59,7 +59,7 @@
                 android:text="Social"
                 tools:layout_editor_absoluteX="214dp"
                 tools:layout_editor_absoluteY="111dp"
-                android:background="@android:color/holo_blue_dark"
+                android:background="@color/blue"
                 android:textColor="@android:color/white"/>
 
             <Button
@@ -71,7 +71,7 @@
                 android:text="Bons plans"
                 tools:layout_editor_absoluteX="218dp"
                 tools:layout_editor_absoluteY="348dp"
-                android:background="@android:color/holo_green_dark"
+                android:background="@color/green"
                 android:textColor="@android:color/white"/>
         </LinearLayout>
 

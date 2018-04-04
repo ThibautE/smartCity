@@ -26,4 +26,7 @@
     <string name="title_activity_social">SocialActivity</string>
     <string name="title_activity_commerce">CommerceActivity</string>
     <string name="title_activity_pub">PubActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

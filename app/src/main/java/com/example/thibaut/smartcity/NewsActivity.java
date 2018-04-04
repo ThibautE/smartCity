@@ -6,10 +6,13 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.view.View;
 
 public class NewsActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
+    private WeatherFragment weatherFragment;
+    private NewsFragment newsFragment;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -41,4 +44,12 @@ public class NewsActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
+    public void openWeatherFragment(View view){
+        findViewById(R.id.weatherButton).setEnabled(false);
+    }
+
+    public void openNewsFragment(View view){
+        //findViewById(R.id.buttonNews).setEnabled(false);
+
+    }
 }

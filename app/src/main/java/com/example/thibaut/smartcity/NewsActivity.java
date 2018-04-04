@@ -49,7 +49,7 @@ public class NewsActivity extends AppCompatActivity {
     }
 
     public void openNewsFragment(View view){
-        //findViewById(R.id.buttonNews).setEnabled(false);
+        findViewById(R.id.newsButton).setEnabled(false);
 
     }
 }

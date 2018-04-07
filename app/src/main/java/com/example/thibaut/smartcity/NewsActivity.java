@@ -1,5 +1,7 @@
 package com.example.thibaut.smartcity;
 
+import android.app.FragmentTransaction;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -7,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.view.View;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
 public class NewsActivity extends AppCompatActivity {
 
@@ -38,6 +42,11 @@ public class NewsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
+        newsFragment = new NewsFragment();
+        weatherFragment = new WeatherFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container,weatherFragment);
+        transaction.commit();
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -45,11 +54,17 @@ public class NewsActivity extends AppCompatActivity {
     }
 
     public void openWeatherFragment(View view){
-        findViewById(R.id.weatherButton).setEnabled(false);
+        findViewById(R.id.newsButton).setEnabled(false);
+        findViewById(R.id.weatherButton).setEnabled(true);
+        FragmentTransaction transaction= getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container,weatherFragment);
+        transaction.commit();
     }
-
     public void openNewsFragment(View view){
         findViewById(R.id.newsButton).setEnabled(false);
-
+        findViewById(R.id.weatherButton).setEnabled(true);
+        FragmentTransaction transaction= getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container,newsFragment);
+        transaction.commit();
     }
 }

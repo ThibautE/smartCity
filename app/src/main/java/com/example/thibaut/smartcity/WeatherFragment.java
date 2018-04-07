@@ -99,7 +99,7 @@ public class WeatherFragment extends Fragment {
         try {
             String currentCity = "Montpellier";
             cityTextView.setText(currentCity);
-            SimpleDateFormat datef = new SimpleDateFormat("dd MMMM EEEE, HH:mm");
+            SimpleDateFormat datef = new SimpleDateFormat("dd MMMM EEEE");
             String date = datef.format(new Date(json.getLong("dt") * 1000));
             dateTextView.setText(date);
             JSONObject details = json.getJSONArray("weather").getJSONObject(0);

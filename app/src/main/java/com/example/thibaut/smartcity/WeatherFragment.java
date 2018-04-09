@@ -18,6 +18,7 @@ import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import com.example.thibaut.smartcity.DB.MainDB;
 import com.example.thibaut.smartcity.DB.PersonDB;
@@ -99,7 +100,7 @@ public class WeatherFragment extends Fragment {
         try {
             String currentCity = "Montpellier";
             cityTextView.setText(currentCity);
-            SimpleDateFormat datef = new SimpleDateFormat("dd MMMM EEEE");
+            SimpleDateFormat datef = new SimpleDateFormat("dd MMMM YYYY", Locale.FRANCE);
             String date = datef.format(new Date(json.getLong("dt") * 1000));
             dateTextView.setText(date);
             JSONObject details = json.getJSONArray("weather").getJSONObject(0);

@@ -33,4 +33,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="weatherAPIKey">dc4e49445b7b1fa4bf85468d684a6743</string>
     <string name="weatherError">Météo non disponible</string>
+    <string name="currentCity" />
 </resources>

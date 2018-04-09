@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.thibaut.smartcity">
 
-    <uses-permission android:name="android.permission.INTERNET"/> <!-- Autorisation connexion à internet -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Autorisation connexion à internet -->
+
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -61,6 +62,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.thibaut.smartcity.MainActivity" />
         </activity>
+        <activity android:name=".ChangeCityActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
     </application>
 
 </manifest>

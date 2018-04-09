@@ -105,8 +105,9 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
-
+        } else if (id == R.id.nav_city) {
+                Intent intent = new Intent(this, ChangeCityActivity.class);
+                startActivity(intent);
         } else if (id == R.id.nav_send) {
 
         }
@@ -135,6 +136,7 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this, SocialActivity.class);
         startActivity(intent);
     }
+
 
     public void showImage() {
         Dialog builder = new Dialog(this);

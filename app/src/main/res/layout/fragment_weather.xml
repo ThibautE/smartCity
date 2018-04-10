@@ -4,6 +4,23 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/textWeather"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/weather"
+        android:textSize="@dimen/place_autocomplete_powered_by_google_height"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/weathericon"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"/>
+
+    <TextView
         android:id="@+id/city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,4 +49,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+
 </LinearLayout>

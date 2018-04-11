@@ -144,7 +144,6 @@ public class WeatherFragment extends Fragment {
         }
 
         weatherTextView.setText(iconM + ", " + icon); //ajoute la météo correspondante dans la textView
-        //TODO NE MARCHE PAS ;
         weatherImageView.setImageResource(getResources().getIdentifier(icon, "drawable", "com.example.thibaut.smartcity")); //est censé ajouter l'image correspondante a la météo dans l imageview
     }
 }

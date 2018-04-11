@@ -29,17 +29,17 @@ import com.example.thibaut.smartcity.DB.*;
 public class ChangeCityActivity extends AppCompatActivity implements OnConnectionFailedListener {
 
     private GoogleApiClient myGoogleApiClient;
-    private MainDB myMainDB;
+    private MainDB myDatabaseHandler;
     private String newCity = "";
     private String currentCity;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_city);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-        myMainDB = new MainDB(ChangeCityActivity.this);
+        myDatabaseHandler = new MainDB(ChangeCityActivity.this);
 
         //Init Ville
-        SQLiteDatabase db = myMainDB.getReadableDatabase();
+        SQLiteDatabase db = myDatabaseHandler.getReadableDatabase();
         String[] projection = {
                 PersonDB.FeedEntry.COLUMN_CITY
         };
@@ -58,7 +58,7 @@ public class ChangeCityActivity extends AppCompatActivity implements OnConnectio
         cursor.close();
 
         //TextView
-        ((TextView) findViewById(R.id.yourCurrentCity)).append(currentCity);
+        ((TextView) findViewById(R.id.text_you_are)).append(currentCity);
 
         //Autocomplete
         AutocompleteFilter autocompleteFilter = new AutocompleteFilter.Builder().setTypeFilter(AutocompleteFilter.TYPE_FILTER_CITIES).setCountry("FR").build();
@@ -88,7 +88,7 @@ public class ChangeCityActivity extends AppCompatActivity implements OnConnectio
         });
     }
     public void onConnectionFailed (ConnectionResult result){
-        Log.d("Error","Erreur");
+        Log.d("PROBLEM","ça marche pas là");
     }
     public void close(View view){
         ChangeCityActivity.this.finish();
@@ -98,22 +98,17 @@ public class ChangeCityActivity extends AppCompatActivity implements OnConnectio
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
         autocompleteFragment.setText("");
         if(!newCity.equals("")){
-            SQLiteDatabase db = myMainDB.getWritableDatabase();
+            SQLiteDatabase db = myDatabaseHandler.getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put(PersonDB.FeedEntry.COLUMN_CITY,newCity);
             db.update(PersonDB.FeedEntry.TABLE_NAME, values,null,null);
             currentCity = newCity;
-            ((TextView) findViewById(R.id.yourCurrentCity)).setText(R.string.currentCity);
-            ((TextView) findViewById(R.id.yourCurrentCity)).append(currentCity);
+            ((TextView) findViewById(R.id.text_you_are)).setText(R.string.you_are);
+            ((TextView) findViewById(R.id.text_you_are)).append(currentCity);
         }
     }
     public void onDestroy(){
-        myMainDB.close();
+        myDatabaseHandler.close();
         super.onDestroy();
-    }
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
     }
 }

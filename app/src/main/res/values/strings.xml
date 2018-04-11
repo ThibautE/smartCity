@@ -34,4 +34,8 @@
     <string name="weatherAPIKey">dc4e49445b7b1fa4bf85468d684a6743</string>
     <string name="weatherError">Météo non disponible</string>
     <string name="currentCity" />
+    <string name="change_city" >"Changer de ville"</string>
+    <string name="you_are" >"Vous êtes ici"</string>
+    <string name="cancel" >"Annuler"</string>
+    <string name="confirm" >"Confirmer"</string>
 </resources>

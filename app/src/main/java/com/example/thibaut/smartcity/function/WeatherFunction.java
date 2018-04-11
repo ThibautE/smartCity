@@ -17,8 +17,9 @@ import java.net.URL;
 
 public class WeatherFunction {
 
-    private static final String OPEN_WEATHER_MAP_API =
-            "http://api.openweathermap.org/data/2.5/weather?q=%s,FR";
+    private static final String OPEN_WEATHER_MAP_API = "http://api.openweathermap.org/data/2.5/weather?q=%s,FR";
+    //Prévision 5 jours
+    //private static final String OPEN_FORECAST_MAP_API = "http://api.openweathermap.org/data/2.5/forecast?q=%s,FR&id=524901";
 
     public static JSONObject getJSON(Context context, String city){
         try{

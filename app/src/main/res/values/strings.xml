@@ -28,7 +28,7 @@
     <string name="title_activity_pub">Deals</string>
 
     <string name="news">News</string>
-    <string name="weather">Weather</string>
+    <string name="weather">Météo</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="weatherAPIKey">dc4e49445b7b1fa4bf85468d684a6743</string>

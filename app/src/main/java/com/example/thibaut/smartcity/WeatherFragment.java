@@ -46,7 +46,7 @@ public class WeatherFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_weather, container, false);
         cityTextView = rootView.findViewById(R.id.city);
-        dateTextView = rootView.findViewById(R.id.dateWeather);
+       // dateTextView = rootView.findViewById(R.id.dateWeather); //TEXTVIEW DE LA DATE
         weatherTextView = rootView.findViewById(R.id.weather);
         humidityTextView = rootView.findViewById(R.id.humidity);
         temperatureTextView = rootView.findViewById(R.id.temperature);
@@ -108,7 +108,7 @@ public class WeatherFragment extends Fragment {
             cityTextView.setText(currentCity);
             SimpleDateFormat datef = new SimpleDateFormat("dd MMMM YYYY", Locale.FRANCE);
             String date = datef.format(new Date(json.getLong("dt") * 1000));
-            dateTextView.setText(date);
+            //dateTextView.setText(date);   --------- AFFICHER LA DATE DANS SA TEXTVIEW
             JSONObject details = json.getJSONArray("weather").getJSONObject(0);
             setWeatherIcon(details.getInt("id"),
                     json.getJSONObject("sys").getLong("sunrise") * 1000,
@@ -122,35 +122,29 @@ public class WeatherFragment extends Fragment {
         String icon = "";
         String iconM = "";
         long currentTime = new Date().getTime();
-        if (currentTime >= sunrise && currentTime < sunset)
+        if (currentTime >= sunrise && currentTime < sunset) //récupération code jour/nuit
             iconM = "Journée";
         else
             iconM = "Nuit";
-        switch (id) {
-            case 200:
-                icon = "orage";
-                break;
-            case 300:
-                icon = "bruine";
-                break;
-            case 700:
-                icon = "brouillard";
-                break;
-            case 800:
-                icon = "beau";
-                break;
-            case 801:
-                icon = "nuageux";
-                break;
-            case 600:
-                icon = "neige";
-                break;
-            case 500:
-                icon = "pluie";
-                break;
+
+        if(id>=200 && id<300){ //récupération code météo
+            icon = "orage";
+        } else if(id>=300 && id<400){
+            icon = "bruine";
+        } else if(id>=500 && id<600){
+            icon = "pluie";
+        } else if(id>=600 && id<700){
+            icon = "neige";
+        } else if(id>=700 && id<800){
+            icon = "brouillard";
+        } else if(id>=800 && id<900){
+            icon = "beau";
+        } else if(id>=900 && id<1000) {
+            icon = "orage";
         }
+
         weatherTextView.setText(iconM + ", " + icon); //ajoute la météo correspondante dans la textView
-        //TODO NE MARCHE PAS ;_;
-        weatherImageView.setImageResource(getResources().getIdentifier(icon, "drawable", "package.name")); //est censé ajouter l'image correspondante a la météo dans l imageview
+        //TODO NE MARCHE PAS ;
+        weatherImageView.setImageResource(getResources().getIdentifier(icon, "drawable", "com.example.thibaut.smartcity")); //est censé ajouter l'image correspondante a la météo dans l imageview
     }
 }

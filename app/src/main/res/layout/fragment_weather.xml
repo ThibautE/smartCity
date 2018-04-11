@@ -21,22 +21,26 @@
         android:adjustViewBounds="true"/>
 
     <TextView
+        android:id = "@+id/weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="30dp"/>
+
+    <TextView
         android:id="@+id/city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:textSize="20dp"/>
 
+    <!-- DATE DE LA METEO #osef?
     <TextView
         android:id="@+id/dateWeather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
-
-    <TextView
-        android:id = "@+id/weather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+        -->
 
     <TextView
         android:id = "@+id/humidity"

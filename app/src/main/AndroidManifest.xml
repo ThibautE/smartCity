@@ -75,6 +75,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.thibaut.smartcity.MainActivity" />
             </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDiQRdVG-B5kfRd4stJanWqak1ow-5Ch-A"/>
     </application>
 
 </manifest>

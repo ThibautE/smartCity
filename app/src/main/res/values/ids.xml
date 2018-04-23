@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="fragment_container" type="id">frame_news</item>
+    <item name="place_autocomplete_fragment" type="id" />
+    <item name="text_you_are" type="id" />
 </resources>

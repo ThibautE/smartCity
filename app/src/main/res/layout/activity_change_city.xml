@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="close"
                 android:text="@string/cancel"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="4dp"/>
 
             <Button
                 android:layout_width="wrap_content"

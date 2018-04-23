@@ -42,7 +42,6 @@
             android:layout_weight="1"
             android:background="@color/red"
             android:text="@string/news" />
-
     </LinearLayout>
 
 

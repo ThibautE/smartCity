@@ -38,6 +38,7 @@ public class WeatherFragment extends Fragment {
     TextView humidityTextView;
     TextView temperatureTextView;
     ImageView weatherImageView;
+    private String currentCity;
 
     public WeatherFragment() {
         handler = new Handler();
@@ -46,7 +47,6 @@ public class WeatherFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_weather, container, false);
         cityTextView = rootView.findViewById(R.id.city);
-       // dateTextView = rootView.findViewById(R.id.dateWeather); //TEXTVIEW DE LA DATE
         weatherTextView = rootView.findViewById(R.id.weather);
         humidityTextView = rootView.findViewById(R.id.humidity);
         temperatureTextView = rootView.findViewById(R.id.temperature);
@@ -70,14 +70,14 @@ public class WeatherFragment extends Fragment {
                 null,                   // don't filter by row groups
                 null               // The sort order
         );
-        String currentCity = "Montpellier";
+        this.currentCity = "Montpellier";
 
         if (cursor.moveToFirst()) {
-            currentCity = cursor.getString(cursor.getColumnIndex(PersonDB.FeedEntry.COLUMN_CITY));
+            this.currentCity = cursor.getString(cursor.getColumnIndex(PersonDB.FeedEntry.COLUMN_CITY));
         }
 
         cursor.close();
-        updateWeatherData(currentCity);
+        updateWeatherData(this.currentCity);
     }
 
     public void updateWeatherData(final String city) {
@@ -102,10 +102,9 @@ public class WeatherFragment extends Fragment {
         }.start();
     }
 
-    private void renderWeather(JSONObject json) {
+    public void renderWeather(JSONObject json) {
         try {
-            String currentCity = "Montpellier";
-            cityTextView.setText(currentCity);
+            cityTextView.setText(this.currentCity);
             //SimpleDateFormat datef = new SimpleDateFormat("dd MMMM YYYY", Locale.FRANCE);
             //String date = datef.format(new Date(json.getLong("dt") * 1000));
             //dateTextView.setText(date);   --------- AFFICHER LA DATE DANS SA TEXTVIEW

@@ -29,17 +29,17 @@ import com.example.thibaut.smartcity.DB.*;
 public class ChangeCityActivity extends AppCompatActivity implements OnConnectionFailedListener {
 
     private GoogleApiClient myGoogleApiClient;
-    private MainDB myDatabaseHandler;
+    private MainDB myDB;
     private String newCity = "";
     private String currentCity;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_city);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-        myDatabaseHandler = new MainDB(ChangeCityActivity.this);
+        myDB = new MainDB(ChangeCityActivity.this);
 
         //Init Ville
-        SQLiteDatabase db = myDatabaseHandler.getReadableDatabase();
+        SQLiteDatabase db = myDB.getReadableDatabase();
         String[] projection = {
                 PersonDB.FeedEntry.COLUMN_CITY
         };
@@ -98,7 +98,7 @@ public class ChangeCityActivity extends AppCompatActivity implements OnConnectio
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
         autocompleteFragment.setText("");
         if(!newCity.equals("")){
-            SQLiteDatabase db = myDatabaseHandler.getWritableDatabase();
+            SQLiteDatabase db = myDB.getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put(PersonDB.FeedEntry.COLUMN_CITY,newCity);
             db.update(PersonDB.FeedEntry.TABLE_NAME, values,null,null);
@@ -108,7 +108,7 @@ public class ChangeCityActivity extends AppCompatActivity implements OnConnectio
         }
     }
     public void onDestroy(){
-        myDatabaseHandler.close();
+        myDB.close();
         super.onDestroy();
     }
 }

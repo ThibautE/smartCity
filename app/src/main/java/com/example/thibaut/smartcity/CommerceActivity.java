@@ -20,7 +20,6 @@ public class CommerceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_commerce);
 
         mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
     }
 
 }

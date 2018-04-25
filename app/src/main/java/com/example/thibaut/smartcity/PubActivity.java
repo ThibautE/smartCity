@@ -17,7 +17,6 @@ public class PubActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pub);
 
         mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
     }
 
 }

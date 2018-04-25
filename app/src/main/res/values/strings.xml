@@ -36,6 +36,6 @@
     <string name="currentCity" />
     <string name="change_city" >"Changer de ville"</string>
     <string name="you_are" >"Vous êtes localisé à "</string>
-    <string name="cancel" >"Annuler"</string>
+    <string name="retour" >"Retour"</string>
     <string name="confirm" >"Confirmer"</string>
 </resources>

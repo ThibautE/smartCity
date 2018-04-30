@@ -7,5 +7,7 @@
     <color name="orange">#fdcb6e</color>
     <color name="green">#55efc4</color>
     <color name="blue">#74b9ff</color>
+    <color name="ciel">#dff9fb</color>
+    <color name="gris">#ecf0f1</color>
 
 </resources>

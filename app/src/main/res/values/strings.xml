@@ -34,8 +34,9 @@
     <string name="weatherAPIKey">dc4e49445b7b1fa4bf85468d684a6743</string>
     <string name="weatherError">Météo non disponible</string>
     <string name="currentCity" />
-    <string name="change_city" >"Changer de ville"</string>
-    <string name="you_are" >"Vous êtes localisé à "</string>
-    <string name="retour" >"Retour"</string>
-    <string name="confirm" >"Confirmer"</string>
+    <string name="change_city">"Changer de ville"</string>
+    <string name="you_are">"Vous êtes localisé à "</string>
+    <string name="retour">"Retour"</string>
+    <string name="confirm">"Confirmer"</string>
+    <string name="newsAPIKey">516d1edc68cb4e7ca9ac3917324777f9</string>
 </resources>

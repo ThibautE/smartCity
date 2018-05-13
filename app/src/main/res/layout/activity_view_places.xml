@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewPlacesActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <ImageView
+            android:id="@+id/photo"
+            android:src="@drawable/ic_photo"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <TextView
+            android:id="@+id/place_name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Nom du lieu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/place_adress"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:text="Adresse du lieu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/place_open_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="Ouvert : "
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tél : "
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <RatingBar
+            android:id="@+id/rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_show_map"
+            android:text="Afficher sur Google Maps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+        
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

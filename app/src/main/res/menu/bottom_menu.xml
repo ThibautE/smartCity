@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <item
+        android:id="@+id/action_market"
+        android:enabled="true"
+        android:title="Supermarche"
+        android:icon="@drawable/ic_shopping_cart_black_24dp"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/action_hotel"
+        android:enabled="true"
+        android:title="Hotel"
+        android:icon="@drawable/ic_hotel_black_24dp"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/action_barCity"
+        android:enabled="true"
+        android:title="Bar"
+        android:icon="@drawable/ic_local_bar_black_24dp"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/action_restaurant"
+        android:enabled="true"
+        android:title="Restaurant"
+        android:icon="@drawable/ic_restaurant_black_24dp"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/action_bank"
+        android:enabled="true"
+        android:title="Banque"
+        android:icon="@drawable/ic_bank_black_24dp"
+        app:showAsAction="ifRoom"
+        />
+
+</menu>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.thibaut.smartcity">
 
     <uses-permission android:name="android.permission.INTERNET" /> <!-- Autorisation connexion à internet -->
@@ -10,13 +11,25 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name">
@@ -47,14 +60,6 @@
                 android:value="com.example.thibaut.smartcity.MainActivity" />
         </activity>
         <activity
-            android:name=".CommerceActivity"
-            android:label=""
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.thibaut.smartcity.MainActivity" />
-        </activity>
-        <activity
             android:name=".PubActivity"
             android:label=""
             android:parentActivityName=".MainActivity">
@@ -69,15 +74,29 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.thibaut.smartcity.MainActivity" />
         </activity>
-        <activity android:name=".ProfilActivity"
+        <activity
+            android:name=".ProfilActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.thibaut.smartcity.MainActivity" />
-            </activity>
+        </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDiQRdVG-B5kfRd4stJanWqak1ow-5Ch-A"/>
+            android:value="AIzaSyDiQRdVG-B5kfRd4stJanWqak1ow-5Ch-A" />
+
+        <activity
+            android:name=".CommerceActivity"
+            android:label="@string/title_activity_commerce" />
+        <activity
+            android:name=".ViewPlacesActivity"
+            android:label="Retour">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.thibaut.smartcity.MainActivity" />
+        </activity>
+        <activity android:name=".InteretActivity"></activity>
     </application>
 
 </manifest>

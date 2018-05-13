@@ -66,4 +66,9 @@ public class ProfilActivity extends AppCompatActivity {
         }
     }
 
+    public void goToInteretActivity(View view){
+        Intent intent = new Intent(this, InteretActivity.class);
+        startActivity(intent);
+    }
+
 }

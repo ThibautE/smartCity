@@ -1,7 +1,11 @@
 package com.example.thibaut.smartcity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -52,6 +56,7 @@ public class ViewPlacesActivity extends AppCompatActivity {
         opening_hours.setText("");
         phone.setText("");
 
+
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +64,8 @@ public class ViewPlacesActivity extends AppCompatActivity {
                 startActivity(mapIntent);
             }
         });
+
+
 
         if(Common.currentResult.getPhotos() != null && Common.currentResult.getPhotos().length > 0){
             Picasso.with(this)
@@ -75,7 +82,7 @@ public class ViewPlacesActivity extends AppCompatActivity {
         }
 
         if (Common.currentResult.getOpening_hours() != null){
-            opening_hours.setText("Ouvert en ce moment : " +Common.currentResult.getOpening_hours().getOpen_now());
+            opening_hours.setText("Ouvert en ce moment : " + Common.currentResult.getOpening_hours().getOpen_now());
         }else {
             opening_hours.setVisibility(View.GONE);
         }
@@ -89,6 +96,14 @@ public class ViewPlacesActivity extends AppCompatActivity {
                         place_adress.setText(myPlace.getResult().getFormatted_address());
                         place_name.setText(myPlace.getResult().getName());
                         phone.setText(myPlace.getResult().getInternational_phone_number());
+                        Log.i("tel : ", String.valueOf(phone.getText()));
+                        phone.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + String.valueOf(phone.getText())));
+                                startActivity(intent);
+                            }
+                        });
                         }
 
                     @Override

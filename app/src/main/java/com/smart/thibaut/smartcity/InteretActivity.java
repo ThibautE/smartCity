@@ -20,6 +20,7 @@ public class InteretActivity extends AppCompatActivity implements CardStack.Card
         card_stack.setContentResource(R.layout.card_layout);
         card_stack.setStackMargin(20);
         card_stack.setAdapter(card_adapter);
+
         card_stack.setListener(this);
     }
 
@@ -35,7 +36,7 @@ public class InteretActivity extends AppCompatActivity implements CardStack.Card
 
     @Override
     public boolean swipeEnd(int i, float v) {
-        return (v>300)?true:false;
+        return v > 300;
     }
 
     @Override

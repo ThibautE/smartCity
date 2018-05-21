@@ -13,8 +13,8 @@
     <string name="action_settings">Settings</string>
     <string name="title_home">Home</string>
 
-    <string name="news">News</string>
-    <string name="weather">Météo</string>
+    <string name="news"></string>
+    <string name="weather">Afficher les news</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="weatherAPIKey">dc4e49445b7b1fa4bf85468d684a6743</string>
@@ -26,4 +26,11 @@
     <string name="newsAPIKey">516d1edc68cb4e7ca9ac3917324777f9</string>
     <string name="title_activity_commerce">Map</string>
     <string name="title_activity_view_places">ViewPlacesActivity</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDiQRdVG-B5kfRd4stJanWqak1ow-5Ch-A</string>
+    <string name="browser_key">AIzaSyBmCACKhhJpglwdWzz-uGnuUlI7UpVVAqc</string>
+    <string name="interet">Gérer ses centres d\'intérêt</string>
+    <string name="deco">Se deconnecter</string>
+    <string name="bp">Bons plans</string>
+    <string name="soc">Social</string>
 </resources>

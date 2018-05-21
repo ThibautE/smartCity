@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.thibaut.smartcity.MainActivity"
+    tools:context="com.smart.thibaut.smartcity.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
     <LinearLayout
@@ -25,10 +25,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="goToNewsActivity"
-                android:text="Actualités"
+                android:text="Actualites"
+                android:textSize="30sp"
                 tools:layout_editor_absoluteX="26dp"
                 tools:layout_editor_absoluteY="112dp"
-                android:background="@color/red"
+                android:background="@color/menu1"
                 android:textColor="@android:color/white"/>
 
             <Button
@@ -38,9 +39,10 @@
                 android:layout_weight="1"
                 android:onClick="goToCommerceActivity"
                 android:text="Commerces"
+                android:textSize="30sp"
                 tools:layout_editor_absoluteX="26dp"
                 tools:layout_editor_absoluteY="348dp"
-                android:background="@color/orange"
+                android:background="@color/menu2"
                 android:textColor="@android:color/white"/>
         </LinearLayout>
 
@@ -56,11 +58,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="goToSocialActivity"
-                android:text="Social"
+                android:text="@string/soc"
+                android:textSize="30sp"
                 tools:layout_editor_absoluteX="214dp"
                 tools:layout_editor_absoluteY="111dp"
-                android:background="@color/blue"
-                android:textColor="@android:color/white"/>
+                android:background="@color/menu3"
+                android:textColor="@android:color/white"
+                />
 
             <Button
                 android:id="@+id/pub"
@@ -68,10 +72,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="goToPubActivity"
-                android:text="Bons plans"
+                android:text="@string/bp"
+                android:textSize="30sp"
                 tools:layout_editor_absoluteX="218dp"
                 tools:layout_editor_absoluteY="348dp"
-                android:background="@color/green"
+                android:background="@color/menu4"
                 android:textColor="@android:color/white"/>
         </LinearLayout>
 

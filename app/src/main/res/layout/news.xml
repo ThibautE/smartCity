@@ -15,19 +15,22 @@
         android:id="@+id/newsTitle"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:textStyle="bold"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/newsImage"
-        android:layout_toRightOf="@+id/newsImage" />
+        android:layout_toRightOf="@+id/newsImage"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/newsDescription"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="6dp"
+        android:layout_height="35dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/newsTitle"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/newsImage"
         android:layout_toRightOf="@+id/newsImage" />
 </RelativeLayout>

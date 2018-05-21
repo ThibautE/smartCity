@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.thibaut.smartcity.ProfilActivity">
+    tools:context="com.smart.thibaut.smartcity.ProfilActivity">
 
     <ImageView
         android:id="@+id/imageViewProfile"
@@ -50,7 +50,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:onClick="goToInteretActivity"
-        android:text="Gérer ses centres d'intérêt"
+        android:text="@string/interet"
         app:layout_constraintBottom_toTopOf="@+id/disconnect"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +63,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="150dp"
-        android:text="Se deconnecter"
+        android:text="@string/deco"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

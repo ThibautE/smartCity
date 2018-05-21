@@ -9,6 +9,10 @@
     <color name="blue">#74b9ff</color>
     <color name="ciel">#dff9fb</color>
     <color name="gris">#ecf0f1</color>
+    <color name="menu1">#dcdde1</color>
+    <color name="menu2">#40739e</color>
+    <color name="menu3">#40739e</color>
+    <color name="menu4">#dcdde1</color>
 
 
 </resources>

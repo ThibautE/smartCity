@@ -7,7 +7,6 @@ import com.wenchao.cardstack.CardStack;
 
 public class InteretActivity extends AppCompatActivity implements CardStack.CardEventListener {
 
-    private CardStack card_stack;
     private CardAdapter card_adapter;
 
     @Override
@@ -16,7 +15,7 @@ public class InteretActivity extends AppCompatActivity implements CardStack.Card
         setContentView(R.layout.activity_interet);
 
         initImages();
-        card_stack = findViewById(R.id.card_stack);
+        CardStack card_stack = findViewById(R.id.card_stack);
         card_stack.setContentResource(R.layout.card_layout);
         card_stack.setStackMargin(20);
         card_stack.setAdapter(card_adapter);

@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,7 +22,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import hmin202.smart.thibaut.smartcity.DB.MainDB;
-import hmin202.smart.thibaut.smartcity.DB.PersonDB;
+import hmin202.smart.thibaut.smartcity.DB.CityDB;
 import hmin202.smart.thibaut.smartcity.Model.MyPlaces;
 import hmin202.smart.thibaut.smartcity.Model.Results;
 
@@ -46,11 +45,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.List;
 
-import hmin202.smart.thibaut.smartcity.DB.MainDB;
-import hmin202.smart.thibaut.smartcity.DB.PersonDB;
-import hmin202.smart.thibaut.smartcity.Model.MyPlaces;
-import hmin202.smart.thibaut.smartcity.Model.Results;
-import hmin202.smart.thibaut.smartcity.Remote.IGoogleAPIService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -84,10 +78,10 @@ public class CommerceActivity extends FragmentActivity implements OnMapReadyCall
         //Init Ville
         SQLiteDatabase db = myDB.getReadableDatabase();
         String[] projection = {
-                PersonDB.FeedEntry.COLUMN_CITY
+                CityDB.FeedEntry.COLUMN_CITY
         };
         Cursor cursor = db.query(
-                PersonDB.FeedEntry.TABLE_NAME,
+                CityDB.FeedEntry.TABLE_NAME,
                 projection,
                 null, //Where clause
                 null, //Where clause
@@ -96,7 +90,7 @@ public class CommerceActivity extends FragmentActivity implements OnMapReadyCall
                 null               // The sort order
         );
         if(cursor.moveToFirst()==true){
-            currentCity = cursor.getString(cursor.getColumnIndex(PersonDB.FeedEntry.COLUMN_CITY));
+            currentCity = cursor.getString(cursor.getColumnIndex(CityDB.FeedEntry.COLUMN_CITY));
         };
         cursor.close();
 

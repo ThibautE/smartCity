@@ -6,12 +6,10 @@ import android.os.Bundle;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -24,48 +22,45 @@ import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 
 
-import hmin202.smart.thibaut.smartcity.DB.*;
 
 import hmin202.smart.thibaut.smartcity.DB.MainDB;
-import hmin202.smart.thibaut.smartcity.DB.PersonDB;
+import hmin202.smart.thibaut.smartcity.DB.CityDB;
 
 public class ChangeCityActivity extends AppCompatActivity implements OnConnectionFailedListener {
 
     private GoogleApiClient myGoogleApiClient;
     private MainDB myDB;
-    private String newCity = "";
-    private String currentCity;
+    private String ville2 = "";
+    private String ville;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_city);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+
+        //reccup la ville dans la bd sqlite
         myDB = new MainDB(ChangeCityActivity.this);
 
-        //Init Ville
         SQLiteDatabase db = myDB.getReadableDatabase();
         String[] projection = {
-                PersonDB.FeedEntry.COLUMN_CITY
+                CityDB.FeedEntry.COLUMN_CITY
         };
         Cursor cursor = db.query(
-                PersonDB.FeedEntry.TABLE_NAME,
+                CityDB.FeedEntry.TABLE_NAME,
                 projection,
-                null, //Where clause
-                null, //Where clause
-                null, //Don't group the rows
-                null,                   // don't filter by row groups
-                null               // The sort order
+                null,
+                null,
+                null,
+                null,
+                null
         );
-        if(cursor.moveToFirst()==true){
-            currentCity = cursor.getString(cursor.getColumnIndex(PersonDB.FeedEntry.COLUMN_CITY));
+        if(cursor.moveToFirst()){
+            ville = cursor.getString(cursor.getColumnIndex(CityDB.FeedEntry.COLUMN_CITY));
         };
         cursor.close();
 
-        //TextView
-        ((TextView) findViewById(R.id.text_you_are)).append(currentCity);
-
-        //Autocomplete
-        AutocompleteFilter autocompleteFilter = new AutocompleteFilter.Builder().setTypeFilter(AutocompleteFilter.TYPE_FILTER_CITIES).setCountry("FR").build();
-
+        //Google API
         myGoogleApiClient = new GoogleApiClient
                 .Builder(this)
                 .addApi(Places.GEO_DATA_API)
@@ -73,45 +68,52 @@ public class ChangeCityActivity extends AppCompatActivity implements OnConnectio
                 .enableAutoManage(this, this)
                 .build();
 
-        PlaceAutocompleteFragment autocompleteFragment =  (PlaceAutocompleteFragment)
-                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+        ((TextView) findViewById(R.id.emplacement)).append(ville);
+        AutocompleteFilter autocompleteFilter = new AutocompleteFilter.Builder().setTypeFilter(AutocompleteFilter.TYPE_FILTER_CITIES).setCountry("FR").build();
+
+        PlaceAutocompleteFragment autocompleteFragment =  (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.adapter);
 
         autocompleteFragment.setFilter(autocompleteFilter);
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
-                newCity = place.getName().toString();
+                ville2 = place.getName().toString();
             }
 
             @Override
             public void onError(Status status) {
-                newCity = "";
+                ville2 = "";
             }
         });
     }
+
+    //gestion erreur OnConnectionFailedListener
     public void onConnectionFailed (ConnectionResult result){
-        Log.d("PROBLEM","ça marche pas là");
+        Log.d("ERROR","Erreur au moment de la connexion, veuilllez réessayer plus tard");
     }
+
     public void close(View view){
         ChangeCityActivity.this.finish();
     }
-    public void validate(View view){
-        PlaceAutocompleteFragment autocompleteFragment =  (PlaceAutocompleteFragment)
-                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
-        autocompleteFragment.setText("");
-        if(!newCity.equals("")){
-            SQLiteDatabase db = myDB.getWritableDatabase();
-            ContentValues values = new ContentValues();
-            values.put(PersonDB.FeedEntry.COLUMN_CITY,newCity);
-            db.update(PersonDB.FeedEntry.TABLE_NAME, values,null,null);
-            currentCity = newCity;
-            ((TextView) findViewById(R.id.text_you_are)).setText(R.string.you_are);
-            ((TextView) findViewById(R.id.text_you_are)).append(currentCity);
-        }
-    }
+
     public void onDestroy(){
         myDB.close();
         super.onDestroy();
+    }
+
+    public void validate(View view){
+        PlaceAutocompleteFragment autocompleteFragment;
+        autocompleteFragment= (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.adapter);
+        autocompleteFragment.setText("");
+        if(ville2 != "" && ville2 != null){
+            SQLiteDatabase db = myDB.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(CityDB.FeedEntry.COLUMN_CITY,ville2);
+            db.update(CityDB.FeedEntry.TABLE_NAME, values,null,null);
+            ville = ville2;
+            ((TextView) findViewById(R.id.emplacement)).setText(R.string.position);
+            ((TextView) findViewById(R.id.emplacement)).append(ville);
+        }
     }
 }

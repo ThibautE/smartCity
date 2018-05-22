@@ -1,18 +1,10 @@
 package hmin202.smart.thibaut.smartcity;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import hmin202.smart.thibaut.smartcity.DB.MainDB;
-import hmin202.smart.thibaut.smartcity.DB.PersonDB;
 
 
 public class CalendarFragment extends Fragment {

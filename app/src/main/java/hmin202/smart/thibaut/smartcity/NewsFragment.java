@@ -12,7 +12,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import hmin202.smart.thibaut.smartcity.DB.MainDB;
-import hmin202.smart.thibaut.smartcity.DB.PersonDB;
+import hmin202.smart.thibaut.smartcity.DB.CityDB;
 import hmin202.smart.thibaut.smartcity.function.NewsFunction;
 
 import org.json.JSONArray;
@@ -23,16 +23,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import hmin202.smart.thibaut.smartcity.DB.MainDB;
-import hmin202.smart.thibaut.smartcity.DB.PersonDB;
-import hmin202.smart.thibaut.smartcity.function.NewsFunction;
-
 public class NewsFragment extends Fragment {
 
     ListView viewListNews;
-    List<NewsFunction> listNews;
+    List<NewsFunction> list;
     String urlImage = "http://x254.co/wp-content/uploads/2017/05/News-Briefs.png";
-    String currentCity = "";
+    String ville = "";
     String url;
 
     @Override
@@ -46,59 +42,56 @@ public class NewsFragment extends Fragment {
         MainDB myDatabaseHandler = new MainDB(getActivity());
         SQLiteDatabase db = myDatabaseHandler.getReadableDatabase();
         String[] projection = {
-                PersonDB.FeedEntry.COLUMN_CITY
+                CityDB.FeedEntry.COLUMN_CITY
         };
         Cursor cursor = db.query(
-                PersonDB.FeedEntry.TABLE_NAME,
+                CityDB.FeedEntry.TABLE_NAME,
                 projection,
-                null, //Where clause
-                null, //Where clause
-                null, //Don't group the rows
-                null,                   // don't filter by row groups
-                null               // The sort order
+                null,
+                null,
+                null,
+                null,
+                null
         );
-        this.currentCity = "Montpellier";
+        this.ville = "";
 
         if (cursor.moveToFirst()) {
-            this.currentCity = cursor.getString(cursor.getColumnIndex(PersonDB.FeedEntry.COLUMN_CITY));
+            this.ville = cursor.getString(cursor.getColumnIndex(CityDB.FeedEntry.COLUMN_CITY));
         }
 
         cursor.close();
         View rootView = inflater.inflate(R.layout.fragment_news, container, false);
 
         try {
-            JSONObject json = new NewsFunctionAPI(getActivity()).execute(currentCity).get();
+            JSONObject json = new NewsFunctionAPI(getActivity()).execute(ville).get();
             if (json == null) {
-                this.listNews = generateNews(0);
+                this.list = createNews(0);
                 Toast.makeText(getActivity(), "Erreur", Toast.LENGTH_SHORT).show();
             } else {
-                this.listNews = getNewsFromJson(json);
+                this.list = getNewsFromJson(json);
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+        } catch (JSONException | ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
-        NewsAdapter adapter = new NewsAdapter(getActivity(), this.listNews);
-        this.viewListNews = (ListView) rootView.findViewById(R.id.listNews);
+
+        NewsAdapter adapter = new NewsAdapter(getActivity(), this.list);
+        this.viewListNews = (ListView) rootView.findViewById(R.id.list);
         this.viewListNews.setAdapter(adapter);
 
         return rootView;
     }
 
     private void printNews() {
-        List<NewsFunction> list = generateNews(5);
+        List<NewsFunction> list = createNews(5);
 
         NewsAdapter adapter = new NewsAdapter(getActivity(), list);
         viewListNews.setAdapter(adapter);
     }
 
-    private List<NewsFunction> generateNews(int nbNews) {
+    private List<NewsFunction> createNews(int nbNews) {
         List<NewsFunction> list = new ArrayList<NewsFunction>();
         for (int i = 1; i <= nbNews; i++) {
-            list.add(new NewsFunction("Titre " + i, "Actualité non disponible." , this.urlImage, this.url));
+            list.add(new NewsFunction(this.urlImage,"Titre " + i, "Actualité non disponible.", this.url));
         }
         return list;
     }
@@ -109,7 +102,7 @@ public class NewsFragment extends Fragment {
         JSONObject article;
         for (int i = 0; i < arrayNews.length(); i++) {
             article = ((JSONObject) arrayNews.get(i));
-            list.add(new NewsFunction(article.getString("title"), article.getString("description"), article.getString("urlToImage"), article.getString("url")));
+            list.add(new NewsFunction(article.getString("urlToImage"), article.getString("title"), article.getString("description"), article.getString("url")));
         }
         return list;
     }

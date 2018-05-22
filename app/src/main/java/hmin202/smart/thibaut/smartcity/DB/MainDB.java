@@ -2,21 +2,21 @@ package hmin202.smart.thibaut.smartcity.DB;
 
 import android.content.ContentValues;
 import android.content.Context;
+
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class MainDB extends SQLiteOpenHelper {
 
-    private static final String SQL_CREATE_ENTRIES =
-            "CREATE  TABLE " + PersonDB.FeedEntry.TABLE_NAME + " ("  +
-
-                    PersonDB.FeedEntry.COLUMN_CITY + " TEXT);";
-    private static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + PersonDB.FeedEntry.TABLE_NAME;
+    private static final String SQLite_CREATE =
+            "CREATE  TABLE " + CityDB.FeedEntry.TABLE_NAME + " ("
+                            + CityDB.FeedEntry.COLUMN_CITY + " TEXT);";
 
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "DatabaseHandler.db";
+    public static final String DATABASE_NAME = "city.db";
+
+    private static final String SQLite_DELETE =
+            "DROP TABLE IF EXISTS " + CityDB.FeedEntry.TABLE_NAME;
 
     public MainDB(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -24,20 +24,16 @@ public class MainDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        Log.i("CREATE","NEW CREATE");
-        sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES);
+        sqLiteDatabase.execSQL(SQLite_CREATE);
         ContentValues values = new ContentValues();
-        values.put(PersonDB.FeedEntry.COLUMN_CITY,"Montpellier");
-        sqLiteDatabase.insert(PersonDB.FeedEntry.TABLE_NAME,null,values);
+        values.put(CityDB.FeedEntry.COLUMN_CITY,"");
+        sqLiteDatabase.insert(CityDB.FeedEntry.TABLE_NAME,null,values);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        sqLiteDatabase.execSQL(SQL_DELETE_ENTRIES);
+        sqLiteDatabase.execSQL(SQLite_DELETE);
         onCreate(sqLiteDatabase);
     }
 
-    public void onDowngrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        onUpgrade(sqLiteDatabase, oldVersion, newVersion);
-    }
 }

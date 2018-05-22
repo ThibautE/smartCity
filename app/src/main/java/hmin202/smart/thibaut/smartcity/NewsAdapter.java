@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
@@ -25,37 +26,36 @@ import java.net.URL;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import hmin202.smart.thibaut.smartcity.function.NewsFunction;
-
 public class NewsAdapter extends ArrayAdapter<NewsFunction> {
 
     public NewsAdapter(@NonNull Context context, List<NewsFunction> listNews) {
         super(context, 0, listNews);
     }
 
-    @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.news, parent, false);
         }
 
-        NewsViewHolder newsViewHolder = (NewsViewHolder) convertView.getTag();
+        convertView.setBackgroundColor(position % 2 == 0 ? Color.WHITE : Color.LTGRAY);
+
+        News n = (News) convertView.getTag();
 
 
-        if (newsViewHolder == null) {
-            newsViewHolder = new NewsViewHolder();
-            newsViewHolder.title = convertView.findViewById(R.id.newsTitle);
-            newsViewHolder.description = convertView.findViewById(R.id.newsDescription);
-            newsViewHolder.image = convertView.findViewById(R.id.newsImage);
+        if (n == null) {
+            n = new News();
+            n.titre = convertView.findViewById(R.id.newsTitle);
+            n.description = convertView.findViewById(R.id.newsDescription);
+            n.image = convertView.findViewById(R.id.newsImage);
 
-            convertView.setTag(newsViewHolder);
+            convertView.setTag(n);
         }
 
         NewsFunction news = getItem(position);
         if (news != null) {
-            newsViewHolder.title.setText(news.getTitle());
-            newsViewHolder.description.setText(news.getDescription());
+            n.titre.setText(news.getTitle());
+            n.description.setText(news.getDescription());
             Bitmap img = null;
             try {
                 img = new GetImageBitmapTask().execute(news.getUrlImage()).get();
@@ -65,7 +65,7 @@ public class NewsAdapter extends ArrayAdapter<NewsFunction> {
                 e.printStackTrace();
             }
             if (img != null) {
-                newsViewHolder.image.setImageBitmap(img);
+                n.image.setImageBitmap(img);
             }
         }
 
@@ -80,11 +80,10 @@ public class NewsAdapter extends ArrayAdapter<NewsFunction> {
     }
 
 
-
-    private class NewsViewHolder {
-        public TextView title;
-        public TextView description;
+    private class News {
         public ImageView image;
+        public TextView titre;
+        public TextView description;
     }
 
     private class GetImageBitmapTask extends AsyncTask<String, Void, Bitmap> {

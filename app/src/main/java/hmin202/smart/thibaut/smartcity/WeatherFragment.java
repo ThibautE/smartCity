@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,41 +15,32 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 import hmin202.smart.thibaut.smartcity.DB.MainDB;
-import hmin202.smart.thibaut.smartcity.DB.PersonDB;
+import hmin202.smart.thibaut.smartcity.DB.CityDB;
 import hmin202.smart.thibaut.smartcity.function.WeatherFunction;
-
-import static android.content.ContentValues.TAG;
 
 public class WeatherFragment extends Fragment {
 
-    Handler handler;
+    TextView cityTV;
+    TextView weatherTV;
+    TextView humidityTV;
+    TextView temperatureTV;
+    ImageView weatherIV;
+    String ville;
 
-    TextView cityTextView;
-    TextView dateTextView;
-    TextView weatherTextView;
-    TextView humidityTextView;
-    TextView temperatureTextView;
-    ImageView weatherImageView;
-    private String currentCity;
-
-    public WeatherFragment() {
-        handler = new Handler();
+    public WeatherFragment(){
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_weather, container, false);
-        cityTextView = rootView.findViewById(R.id.city);
-        weatherTextView = rootView.findViewById(R.id.weather);
-        humidityTextView = rootView.findViewById(R.id.humidity);
-        temperatureTextView = rootView.findViewById(R.id.temperature);
-        weatherImageView = rootView.findViewById(R.id.weathericon);
+        cityTV = rootView.findViewById(R.id.city);
+        weatherTV = rootView.findViewById(R.id.weather);
+        humidityTV = rootView.findViewById(R.id.humidity);
+        temperatureTV = rootView.findViewById(R.id.temperature);
+        weatherIV = rootView.findViewById(R.id.weathericon);
         return rootView;
     }
 
@@ -59,10 +49,10 @@ public class WeatherFragment extends Fragment {
         MainDB myDatabaseHandler = new MainDB(getActivity());
         SQLiteDatabase db = myDatabaseHandler.getReadableDatabase();
         String[] projection = {
-                PersonDB.FeedEntry.COLUMN_CITY
+                CityDB.FeedEntry.COLUMN_CITY
         };
         Cursor cursor = db.query(
-                PersonDB.FeedEntry.TABLE_NAME,
+                CityDB.FeedEntry.TABLE_NAME,
                 projection,
                 null, //Where clause
                 null, //Where clause
@@ -70,17 +60,18 @@ public class WeatherFragment extends Fragment {
                 null,                   // don't filter by row groups
                 null               // The sort order
         );
-        this.currentCity = "Montpellier";
+        this.ville = "";
 
         if (cursor.moveToFirst()) {
-            this.currentCity = cursor.getString(cursor.getColumnIndex(PersonDB.FeedEntry.COLUMN_CITY));
+            this.ville = cursor.getString(cursor.getColumnIndex(CityDB.FeedEntry.COLUMN_CITY));
         }
 
         cursor.close();
-        updateWeatherData(this.currentCity);
+        updateWeatherData(this.ville);
     }
 
     public void updateWeatherData(final String city) {
+        Handler handler = new Handler();
         new Thread() {
             public void run() {
                 final JSONObject json = WeatherFunction.getJSON(getActivity(), city);
@@ -94,7 +85,7 @@ public class WeatherFragment extends Fragment {
                 } else {
                     handler.post(new Runnable() {
                         public void run() {
-                            renderWeather(json);
+                            weather(json);
                         }
                     });
                 }
@@ -102,14 +93,11 @@ public class WeatherFragment extends Fragment {
         }.start();
     }
 
-    public void renderWeather(JSONObject json) {
+    public void weather(JSONObject json) {
         try {
-            cityTextView.setText(this.currentCity);
-            //SimpleDateFormat datef = new SimpleDateFormat("dd MMMM YYYY", Locale.FRANCE);
-            //String date = datef.format(new Date(json.getLong("dt") * 1000));
-            //dateTextView.setText(date);   --------- AFFICHER LA DATE DANS SA TEXTVIEW
-            JSONObject details = json.getJSONArray("weather").getJSONObject(0);
-            setWeatherIcon(details.getInt("id"),
+            cityTV.setText(this.ville);
+            JSONObject jsonObject = json.getJSONArray("weather").getJSONObject(0);
+            setWeatherIcon(jsonObject.getInt("id"),
                     json.getJSONObject("sys").getLong("sunrise") * 1000,
                     json.getJSONObject("sys").getLong("sunset") * 1000);
         } catch (JSONException e) {
@@ -117,11 +105,11 @@ public class WeatherFragment extends Fragment {
         }
     }
 
-    private void setWeatherIcon(int id, long sunrise, long sunset) {
+    private void setWeatherIcon(int id, long couche, long leve) {
         String icon = "";
         String iconM = "";
         long currentTime = new Date().getTime();
-        if (currentTime >= sunrise && currentTime < sunset) //récupération code jour/nuit
+        if (currentTime >= couche && currentTime < leve) //récupération code jour/nuit
             iconM = "Journée";
         else
             iconM = "Nuit";
@@ -142,7 +130,7 @@ public class WeatherFragment extends Fragment {
             icon = "orage";
         }
 
-        weatherTextView.setText(iconM + ", " + icon); //ajoute la météo correspondante dans la textView
-        weatherImageView.setImageResource(getResources().getIdentifier(icon, "drawable", "hmin202.smart.thibaut.smartcity")); //est censé ajouter l'image correspondante a la météo dans l imageview
+        weatherTV.setText(iconM + ", " + icon); //ajoute la météo correspondante dans la textView
+        weatherIV.setImageResource(getResources().getIdentifier(icon, "drawable", "hmin202.smart.thibaut.smartcity")); //est censé ajouter l'image correspondante a la météo dans l imageview
     }
 }

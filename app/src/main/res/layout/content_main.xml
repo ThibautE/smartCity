@@ -13,72 +13,57 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <Button
+            android:id="@+id/commerce"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:background="@color/menu2"
+            android:onClick="goToCommerceActivity"
+            android:text="Commerces"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="26dp"
+            tools:layout_editor_absoluteY="348dp" />
 
-            <Button
-                android:id="@+id/news"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:onClick="goToNewsActivity"
-                android:text="@string/actualites"
-                android:textSize="30sp"
-                tools:layout_editor_absoluteX="26dp"
-                tools:layout_editor_absoluteY="112dp"
-                android:background="@color/menu1"
-                android:textColor="@color/menu3"/>
-
-            <Button
-                android:id="@+id/commerce"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:onClick="goToCommerceActivity"
-                android:text="Commerces"
-                android:textSize="30sp"
-                tools:layout_editor_absoluteX="26dp"
-                tools:layout_editor_absoluteY="348dp"
-                android:background="@color/menu2"
-                android:textColor="@android:color/white"/>
-        </LinearLayout>
-
-        <LinearLayout
+        <Button
+            android:id="@+id/news"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:background="@color/menu1"
+            android:onClick="goToNewsActivity"
+            android:text="@string/actualites"
+            android:textColor="@color/menu3"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="26dp"
+            tools:layout_editor_absoluteY="112dp" />
 
-            <Button
-                android:id="@+id/social"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:onClick="goToSocialActivity"
-                android:text="@string/soc"
-                android:textSize="30sp"
-                tools:layout_editor_absoluteX="214dp"
-                tools:layout_editor_absoluteY="111dp"
-                android:background="@color/menu3"
-                android:textColor="@android:color/white"
-                />
+        <Button
+            android:id="@+id/social"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/menu3"
+            android:onClick="goToSocialActivity"
+            android:text="@string/soc"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="214dp"
+            tools:layout_editor_absoluteY="111dp" />
 
-            <Button
-                android:id="@+id/pub"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:onClick="goToPubActivity"
-                android:text="@string/bp"
-                android:textSize="30sp"
-                tools:layout_editor_absoluteX="218dp"
-                tools:layout_editor_absoluteY="348dp"
-                android:background="@color/menu4"
-                android:textColor="@color/menu3"/>
-        </LinearLayout>
+        <Button
+            android:id="@+id/pub"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/menu4"
+            android:onClick="goToPubActivity"
+            android:text="@string/bp"
+            android:textColor="@color/menu3"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="218dp"
+            tools:layout_editor_absoluteY="348dp" />
 
     </LinearLayout>
 

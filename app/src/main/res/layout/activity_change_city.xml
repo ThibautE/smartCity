@@ -15,10 +15,10 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id ="@+id/text_you_are"
+            android:id ="@+id/emplacement"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text = "@string/you_are"
+            android:text = "@string/position"
             android:gravity="center"
             android:textSize="20sp"
             android:layout_marginTop="20dp"
@@ -36,7 +36,7 @@
             android:layout_marginTop="18dp"/>
 
         <fragment
-            android:id="@+id/place_autocomplete_fragment"
+            android:id="@+id/adapter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment" />

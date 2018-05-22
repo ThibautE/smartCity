@@ -1,42 +1,26 @@
 package hmin202.smart.thibaut.smartcity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.text.format.DateFormat;
 
 import hmin202.smart.thibaut.smartcity.DB.MainDB;
-import hmin202.smart.thibaut.smartcity.DB.PersonDB;
-import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.database.FirebaseListAdapter;
-import com.firebase.ui.database.FirebaseListOptions;
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import hmin202.smart.thibaut.smartcity.DB.CityDB;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -45,9 +29,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-
-import hmin202.smart.thibaut.smartcity.DB.MainDB;
-import hmin202.smart.thibaut.smartcity.DB.PersonDB;
 
 
 public class SocialActivity extends AppCompatActivity {
@@ -73,10 +54,10 @@ public class SocialActivity extends AppCompatActivity {
         //Init Ville
         SQLiteDatabase db = myDB.getReadableDatabase();
         String[] projection = {
-                PersonDB.FeedEntry.COLUMN_CITY
+                CityDB.FeedEntry.COLUMN_CITY
         };
         Cursor cursor = db.query(
-                PersonDB.FeedEntry.TABLE_NAME,
+                CityDB.FeedEntry.TABLE_NAME,
                 projection,
                 null, //Where clause
                 null, //Where clause
@@ -85,7 +66,7 @@ public class SocialActivity extends AppCompatActivity {
                 null               // The sort order
         );
         if(cursor.moveToFirst()==true){
-            currentCity = cursor.getString(cursor.getColumnIndex(PersonDB.FeedEntry.COLUMN_CITY));
+            currentCity = cursor.getString(cursor.getColumnIndex(CityDB.FeedEntry.COLUMN_CITY));
         }
         cursor.close();
 

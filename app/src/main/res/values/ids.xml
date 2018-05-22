@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="fragment_container" type="id"/>
-    <item name="place_autocomplete_fragment" type="id" />
-    <item name="text_you_are" type="id" />
     <item name="list_item_title" type="id" />
     <item name="list_item_image" type="id" />
     <item name="list_item_description" type="id" />

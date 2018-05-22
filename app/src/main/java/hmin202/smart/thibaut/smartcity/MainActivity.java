@@ -1,5 +1,6 @@
 package hmin202.smart.thibaut.smartcity;
 
+import android.app.ActionBar;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -31,12 +32,14 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private  static final String REG_TOKEN = "REG_TOKEN";
 
     FirebaseAuth mAuth;
     ImageView imageView;
@@ -50,6 +53,10 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        String recent_token = FirebaseInstanceId.getInstance().getToken();
+        Log.d(REG_TOKEN, recent_token);
+
 
         //changement font
         tv1 = findViewById(R.id.commerce);

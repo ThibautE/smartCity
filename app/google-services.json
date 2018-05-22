@@ -8,34 +8,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1029861152284:android:917abae904f1e216",
+        "mobilesdk_app_id": "1:1029861152284:android:42d94231cd0094a7",
         "android_client_info": {
-          "package_name": "com.example.thibaut.smartcity"
+          "package_name": "hmin202.smart.thibaut.smartcity"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1029861152284-2gs74sc6rrscksa7tirvm89nht07ca59.apps.googleusercontent.com",
+          "client_id": "1029861152284-91t80pmf2nimi7gt2b7s2ghrkoe6v3pm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.thibaut.smartcity",
+            "package_name": "hmin202.smart.thibaut.smartcity",
             "certificate_hash": "48a0fc50a610154706f3c5d202db14e3737ec77c"
-          }
-        },
-        {
-          "client_id": "1029861152284-rjkpkrjnhvj3i2eehcapn7vpl64qij3q.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.thibaut.smartcity",
-            "certificate_hash": "540470658b3eaec5e9c36fdfcea1bc50c83edb7a"
-          }
-        },
-        {
-          "client_id": "1029861152284-tlvr01afojo3nkgcrlj7u9codg601hif.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.thibaut.smartcity",
-            "certificate_hash": "135d31b1be04431160591fc51b8a077d77cfe851"
           }
         },
         {

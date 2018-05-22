@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.1" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.smart.thibaut.smartcity">
+    package="hmin202.smart.thibaut.smartcity">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- Autorisation connexion à internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
@@ -41,7 +41,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.smart.thibaut.smartcity.MainActivity" />
+                android:value="hmin202.smart.thibaut.smartcity.MainActivity" />
         </activity>
         <activity
             android:name=".MainActivity"
@@ -53,7 +53,7 @@
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.smart.thibaut.smartcity.MainActivity" />
+                android:value="hmin202.smart.thibaut.smartcity.MainActivity" />
         </activity>
         <activity
             android:name=".SocialActivity"
@@ -66,7 +66,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.smart.thibaut.smartcity.MainActivity" />
+                android:value="hmin202.smart.thibaut.smartcity.MainActivity" />
         </activity>
         <activity
             android:name=".PubActivity"
@@ -74,21 +74,21 @@
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.smart.thibaut.smartcity.MainActivity" />
+                android:value="hmin202.smart.thibaut.smartcity.MainActivity" />
         </activity>
         <activity
             android:name=".ChangeCityActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.smart.thibaut.smartcity.MainActivity" />
+                android:value="hmin202.smart.thibaut.smartcity.MainActivity" />
         </activity>
         <activity
             android:name=".ProfilActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.smart.thibaut.smartcity.MainActivity" />
+                android:value="hmin202.smart.thibaut.smartcity.MainActivity" />
         </activity>
 
         <meta-data
@@ -103,7 +103,7 @@
             android:label="Retour">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.smart.thibaut.smartcity.MainActivity" />
+                android:value="hmin202.smart.thibaut.smartcity.MainActivity" />
         </activity>
         <activity android:name=".InteretActivity" />
         <activity android:name=".ChatRoomActivity"/>

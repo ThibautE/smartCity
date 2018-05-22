@@ -17,8 +17,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:enabled="true"
-            android:onClick="openNewsFragment"
-            android:text="@string/news" />
+            android:onClick="openFragment"
+            android:text="@string/news"
+            android:textColor="@color/menu3"/>
 
     </LinearLayout>
 

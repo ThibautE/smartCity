@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.thibaut.smartcity"
+        applicationId "hmin202.smart.thibaut.smartcity"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
@@ -40,6 +40,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
     implementation 'com.google.firebase:firebase-database:15.0.1'
     implementation 'com.google.firebase:firebase-core:15.0.2'
+    compile 'com.google.firebase:firebase-messaging:15.0.2'
     implementation 'com.android.support:multidex:1.0.3'
 
     testImplementation 'junit:junit:4.12'

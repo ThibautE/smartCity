@@ -25,12 +25,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="goToNewsActivity"
-                android:text="Actualites"
+                android:text="@string/actualites"
                 android:textSize="30sp"
                 tools:layout_editor_absoluteX="26dp"
                 tools:layout_editor_absoluteY="112dp"
                 android:background="@color/menu1"
-                android:textColor="@android:color/white"/>
+                android:textColor="@color/menu3"/>
 
             <Button
                 android:id="@+id/commerce"
@@ -77,7 +77,7 @@
                 tools:layout_editor_absoluteX="218dp"
                 tools:layout_editor_absoluteY="348dp"
                 android:background="@color/menu4"
-                android:textColor="@android:color/white"/>
+                android:textColor="@color/menu3"/>
         </LinearLayout>
 
     </LinearLayout>

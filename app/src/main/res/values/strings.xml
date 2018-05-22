@@ -23,7 +23,7 @@
     <string name="you_are">"Vous êtes localisé à "</string>
     <string name="retour">"Retour"</string>
     <string name="confirm">"Confirmer"</string>
-    <string name="newsAPIKey">516d1edc68cb4e7ca9ac3917324777f9</string>
+    <string name="newsAPI">516d1edc68cb4e7ca9ac3917324777f9</string>
     <string name="title_activity_commerce">Map</string>
     <string name="title_activity_view_places">ViewPlacesActivity</string>
 
@@ -33,4 +33,8 @@
     <string name="deco">Se deconnecter</string>
     <string name="bp">Bons plans</string>
     <string name="soc">Social</string>
+    <string name="actualites">Actualites</string>
+    <string name="settings">Réglages</string>
+    <string name="choose_city">Choisir sa ville</string>
+    <string name="modify">Modifier mon profil</string>
 </resources>

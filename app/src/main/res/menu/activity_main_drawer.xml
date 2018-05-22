@@ -4,35 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
-    </group>
-
-    <item android:title="Réglage">
+    <item android:title="@string/settings">
         <menu>
             <item
                 android:id="@+id/nav_city"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Choisir sa ville" />
+                android:title="@string/choose_city" />
             <item
                 android:id="@+id/nav_profile"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Modifier mon profil" />
+                android:title="@string/modify" />
         </menu>
     </item>
 
